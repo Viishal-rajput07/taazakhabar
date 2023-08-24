@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 class NavBar extends Component {
   render() {
     return (
@@ -23,43 +23,43 @@ class NavBar extends Component {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link to="/" className="nav-link" aria-current="page" >
+                <Link to="/" className="active nav-link" aria-current="page">
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/business" className="nav-link" >
-                business
+                <Link to="/business" className="nav-link">
+                  Business
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/sports">
-                sports
+                  Sports
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/entertainment">
-                entertainment
+                  Entertainment
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/general">
-                general
+                  General
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/health">
-                health
+                  Health
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/science">
-                science
+                  Science
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/technology">
-                technology
+                  Technology
                 </Link>
               </li>
             </ul>

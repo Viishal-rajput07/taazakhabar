@@ -2,12 +2,10 @@ import React, { Component } from "react";
 import NewsItem from "./NewsItem";
 import Spinner from "./Spinner";
 
-
 export class News extends Component {
-
-   CapitalizeFirstLetter = (string) =>{
+  CapitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
-  }
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -15,7 +13,9 @@ export class News extends Component {
       page: 1,
       loading: false,
     };
-    document.title = `${this.CapitalizeFirstLetter(this.props.category)} - TaazaKhabar`
+    document.title = `${this.CapitalizeFirstLetter(
+      this.props.category
+    )} - TaazaKhabar`;
   }
   async updateNews() {
     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.countryName}&category=${this.props.category}&apiKey=d393bd8cc8574ba1bc80805a10849067&page=${this.state.page}&pagesize=${this.props.pageSize}`;
@@ -29,23 +29,27 @@ export class News extends Component {
     });
   }
   async componentDidMount() {
-  this.updateNews()
-   }
+    this.updateNews();
+  }
 
   render() {
     const handlePrevClick = async () => {
-      this.setState({page: this.state.page - 1});
+      this.setState({ page: this.state.page - 1 });
       this.updateNews();
     };
     const handleNextClick = async () => {
-      this.setState({page: this.state.page + 1});
+      this.setState({ page: this.state.page + 1 });
       this.updateNews();
     };
 
     return (
       <div className="container m-auto my-5">
-        <h1 className="text-center">Stay Updated with {('TaazaKhabar').toUpperCase()}</h1>
-        <h2 className="text-center">Top {this.CapitalizeFirstLetter(this.props.category)} HeadLines</h2>
+        <h1 className="text-center">
+          Stay Updated with {"TaazaKhabar".toUpperCase()}
+        </h1>
+        <h2 className="text-center">
+          Top {this.CapitalizeFirstLetter(this.props.category)} HeadLines
+        </h2>
         {this.state.loading && <Spinner />}
         <div className="row">
           {!this.state.loading &&
@@ -54,11 +58,7 @@ export class News extends Component {
                 <div className="col-md-4" key={element.url}>
                   <NewsItem
                     title={element.title ? element.title : ""}
-                    description={
-                      element.description
-                        ? element.description
-                        : ""
-                    }
+                    description={element.description ? element.description : ""}
                     imageUrl={element.urlToImage}
                     newsUrl={element.url}
                     author={element.author}
@@ -72,14 +72,18 @@ export class News extends Component {
           <button
             disabled={this.state.page <= 1}
             className="btn btn-dark btn-sm"
-            onClick={handlePrevClick}>
-          
+            onClick={handlePrevClick}
+          >
             &larr; Previous
           </button>
-          <button 
-          disabled={this.state.page + 1 >Math.ceil(this.state.totalResults / this.props.pageSize)}
-          className="btn btn-dark btn-sm"
-          onClick={handleNextClick}>
+          <button
+            disabled={
+              this.state.page + 1 >
+              Math.ceil(this.state.totalResults / this.props.pageSize)
+            }
+            className="btn btn-dark btn-sm"
+            onClick={handleNextClick}
+          >
             Next &rarr;
           </button>
         </div>
